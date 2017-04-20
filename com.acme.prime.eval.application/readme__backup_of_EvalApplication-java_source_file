@@ -1,0 +1,26 @@
+// This file stores what was the content of EvalApplication.java source
+// just after the creation of this Bndtools OSGi Project
+// (com.acme.prime.eval.application) using the OSGi-enRoute template
+
+package com.acme.prime.eval.application;
+
+import org.osgi.service.component.annotations.Component;
+
+import osgi.enroute.configurer.api.RequireConfigurerExtender;
+import osgi.enroute.google.angular.capabilities.RequireAngularWebResource;
+import osgi.enroute.rest.api.REST;
+import osgi.enroute.twitter.bootstrap.capabilities.RequireBootstrapWebResource;
+import osgi.enroute.webserver.capabilities.RequireWebServerExtender;
+
+@RequireAngularWebResource(resource={"angular.js","angular-resource.js", "angular-route.js"}, priority=1000)
+@RequireBootstrapWebResource(resource="css/bootstrap.css")
+@RequireWebServerExtender
+@RequireConfigurerExtender
+@Component(name="com.acme.prime.eval")
+public class EvalApplication implements REST {
+
+	public String getUpper(String string) {
+		return string.toUpperCase();
+	}
+
+}
